@@ -1,0 +1,47 @@
+name: Publish to npm
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  publish-npm:
+    # 仅当 push 到 master，或者是合并（merged）到 master 时触发
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 需要获取完整的历史记录以供构建或版本检查
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # 可根据你的项目要求调整 Node 版本
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9 # 使用 pnpm 9，你可根据实际使用的版本调整
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint Code
+        run: pnpm run lint
+
+      - name: Build project
+        run: pnpm run build
+
+      - name: Publish to npm
+        run: pnpm publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.BZSH_TREE_NPM_TOKEN }} # 需要在 GitHub 仓库设置 secrets.NPM_TOKEN

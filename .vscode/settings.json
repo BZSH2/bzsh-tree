@@ -1,0 +1,43 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "stylelint.validate": ["css", "scss", "vue"],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"],
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "$(capture).test.ts, $(capture).test.tsx, $(capture).spec.ts, $(capture).spec.tsx, $(capture).d.ts",
+    "*.tsx": "$(capture).test.ts, $(capture).test.tsx, $(capture).spec.ts, $(capture).spec.tsx, $(capture).d.ts",
+    "*.js": "$(capture).js.map, $(capture).spec.js, $(capture).test.js",
+    "*.vue": "$(capture).js, $(capture).ts, $(capture).css, $(capture).scss, $(capture).less, $(capture).styl, $(capture).spec.js, $(capture).spec.ts, $(capture).test.js, $(capture).test.ts, $(capture).story.vue, $(capture).story.js, $(capture).story.ts",
+    "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml, .npmrc, .browserslistrc, .node-version, .nvmrc, .gitattributes, .gitignore, .gitpod.yml, .editorconfig, tsconfig.*, jsconfig.*, cspell.json",
+    "README.md": "*.md",
+    ".env": ".env.*, .envrc, env.d.ts",
+    "vite.config.*": "vitest.config.*, playwright.config.*, uno.config.*, index.html",
+    ".eslintrc.*": ".eslintignore, .prettierignore, .prettierrc*, .stylelintignore, .stylelintrc*, .lintstagedrc*, commitlint.config.*, .cz.config.cjs",
+    "docker-compose.product.yml": ".dockerignore,nginx.conf",
+    "Dockerfile": "docker-compose.prod.yml, .dockerignore"
+  }
+}
