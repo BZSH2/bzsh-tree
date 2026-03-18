@@ -1,0 +1,75 @@
+{
+  "name": "bzsh-tree",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/bzsh-tree.umd.js",
+  "module": "./dist/bzsh-tree.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/bzsh-tree.es.js",
+      "require": "./dist/bzsh-tree.umd.js"
+    },
+    "./style.css": "./dist/bzsh-tree.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:eslint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.cjs,.mjs --fix",
+    "lint:style": "stylelint \"src/**/*.{css,scss,vue}\" --fix",
+    "lint": "pnpm run lint:eslint && pnpm run lint:style",
+    "format": "prettier --write src/",
+    "prepare": "husky",
+    "cz": "git add . && cz",
+    "release": "standard-version"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@types/node": "^25.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.1",
+    "@typescript-eslint/parser": "^8.57.1",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "commitizen": "^4.3.1",
+    "cz-customizable": "^7.5.1",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^9.33.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "postcss": "^8.5.8",
+    "postcss-html": "^1.8.1",
+    "prettier": "^3.8.1",
+    "standard-version": "^9.5.0",
+    "stylelint": "^17.4.0",
+    "stylelint-config-recommended-vue": "^1.6.1",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.0",
+    "vite-plugin-dts": "^4.5.4",
+    "vue": "^3.5.30",
+    "vue-eslint-parser": "^10.4.0",
+    "vue-tsc": "^3.2.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.cjs"
+    }
+  }
+}
