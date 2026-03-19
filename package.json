@@ -1,6 +1,6 @@
 {
   "name": "bzsh-tree",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "./dist/bzsh-tree.umd.js",
   "module": "./dist/bzsh-tree.es.js",
@@ -28,7 +28,11 @@
     "format": "prettier --write src/",
     "prepare": "husky",
     "cz": "git add . && cz",
-    "release": "standard-version"
+    "release": "standard-version",
+    "release:patch": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
+    "pub": "npm run release && git push --follow-tags"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
