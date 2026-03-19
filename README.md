@@ -1,7 +1,7 @@
 # bzsh-tree
 
 > A modern, lightweight Tree component for Vue 3.
-> 
+>
 > [中文文档](./README.zh-CN.md)
 
 ## Features
@@ -30,15 +30,14 @@ pnpm add bzsh-tree
 You can register the component globally in your `main.ts` or `main.js`:
 
 ```typescript
-import { createApp } from 'vue'
-import App from './App.vue'
-import BzshTree from 'bzsh-tree'
-import 'bzsh-tree/style.css' // Import styles
+import { createApp } from 'vue';
+import App from './App.vue';
+import BzshTree from 'bzsh-tree';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(BzshTree)
-app.mount('#app')
+app.use(BzshTree);
+app.mount('#app');
 ```
 
 Then you can use it in any template:
@@ -49,7 +48,7 @@ Then you can use it in any template:
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const treeData = ref([
   {
@@ -57,14 +56,14 @@ const treeData = ref([
     label: 'Node 1',
     children: [
       { id: 2, label: 'Child Node 1-1' },
-      { id: 3, label: 'Child Node 1-2' }
-    ]
+      { id: 3, label: 'Child Node 1-2' },
+    ],
   },
   {
     id: 4,
-    label: 'Node 2'
-  }
-])
+    label: 'Node 2',
+  },
+]);
 </script>
 ```
 
@@ -78,24 +77,23 @@ Alternatively, you can import and register it locally:
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Tree } from 'bzsh-tree'
-import 'bzsh-tree/style.css'
+import { ref } from 'vue';
+import { Tree } from 'bzsh-tree';
 
 const treeData = ref([
   {
     id: 1,
-    label: 'Local Node'
-  }
-])
+    label: 'Local Node',
+  },
+]);
 </script>
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `data` | `TreeItem[]` | `[]` | The array of data objects to render the tree |
+| Prop   | Type         | Default | Description                                  |
+| ------ | ------------ | ------- | -------------------------------------------- |
+| `data` | `TreeItem[]` | `[]`    | The array of data objects to render the tree |
 
 ### TreeItem Interface
 

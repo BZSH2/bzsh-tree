@@ -39,5 +39,6 @@
     ".eslintrc.*": ".eslintignore, .prettierignore, .prettierrc*, .stylelintignore, .stylelintrc*, .lintstagedrc*, commitlint.config.*, .cz.config.cjs",
     "docker-compose.product.yml": ".dockerignore,nginx.conf",
     "Dockerfile": "docker-compose.prod.yml, .dockerignore"
-  }
+  },
+  "cSpell.userWords": ["bzsh"]
 }

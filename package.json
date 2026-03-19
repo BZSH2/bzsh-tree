@@ -10,16 +10,18 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/bzsh-tree.es.js",
       "require": "./dist/bzsh-tree.umd.js"
-    },
-    "./style.css": "./dist/bzsh-tree.css"
+    }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "README.zh-CN.md"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite serve playground",
     "build": "vue-tsc --noEmit && vite build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
     "lint:eslint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.cjs,.mjs --fix",
     "lint:style": "stylelint \"src/**/*.{css,scss,vue}\" --fix",
     "lint": "pnpm run lint:eslint && pnpm run lint:style",
@@ -46,6 +48,7 @@
     "@typescript-eslint/eslint-plugin": "^8.57.1",
     "@typescript-eslint/parser": "^8.57.1",
     "@vitejs/plugin-vue": "^6.0.5",
+    "@vue/test-utils": "^2.4.6",
     "commitizen": "^4.3.1",
     "cz-customizable": "^7.5.1",
     "eslint": "^8.57.1",
@@ -53,6 +56,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-vue": "^9.33.0",
     "husky": "^9.1.7",
+    "jsdom": "^29.0.0",
     "lint-staged": "^16.4.0",
     "postcss": "^8.5.8",
     "postcss-html": "^1.8.1",
@@ -63,7 +67,9 @@
     "stylelint-config-standard": "^40.0.0",
     "typescript": "^5.9.3",
     "vite": "^8.0.0",
+    "vite-plugin-css-injected-by-js": "^4.0.1",
     "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.1.0",
     "vue": "^3.5.30",
     "vue-eslint-parser": "^10.4.0",
     "vue-tsc": "^3.2.6"
@@ -75,5 +81,8 @@
     "cz-customizable": {
       "config": ".cz-config.cjs"
     }
+  },
+  "dependencies": {
+    "@vueuse/core": "^14.2.1"
   }
 }

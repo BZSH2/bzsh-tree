@@ -1,7 +1,7 @@
 # bzsh-tree
 
 > 一个为 Vue 3 打造的现代化、轻量级树形组件。
-> 
+>
 > [English Documentation](./README.md)
 
 ## 特性
@@ -30,15 +30,14 @@ pnpm add bzsh-tree
 你可以在项目的入口文件 `main.ts` 或 `main.js` 中全局注册该组件：
 
 ```typescript
-import { createApp } from 'vue'
-import App from './App.vue'
-import BzshTree from 'bzsh-tree'
-import 'bzsh-tree/style.css' // 引入基础样式
+import { createApp } from 'vue';
+import App from './App.vue';
+import BzshTree from 'bzsh-tree';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(BzshTree)
-app.mount('#app')
+app.use(BzshTree);
+app.mount('#app');
 ```
 
 全局注册后，你可以在任何模板中直接使用它：
@@ -49,7 +48,7 @@ app.mount('#app')
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const treeData = ref([
   {
@@ -57,14 +56,14 @@ const treeData = ref([
     label: '节点 1',
     children: [
       { id: 2, label: '子节点 1-1' },
-      { id: 3, label: '子节点 1-2' }
-    ]
+      { id: 3, label: '子节点 1-2' },
+    ],
   },
   {
     id: 4,
-    label: '节点 2'
-  }
-])
+    label: '节点 2',
+  },
+]);
 </script>
 ```
 
@@ -78,31 +77,30 @@ const treeData = ref([
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Tree } from 'bzsh-tree'
-import 'bzsh-tree/style.css'
+import { ref } from 'vue';
+import { Tree } from 'bzsh-tree';
 
 const treeData = ref([
   {
     id: 1,
-    label: '局部引入的节点'
-  }
-])
+    label: '局部引入的节点',
+  },
+]);
 </script>
 ```
 
 ## 组件属性 (Props)
 
-| 属性名 | 类型 | 默认值 | 描述 |
-| --- | --- | --- | --- |
-| `data` | `TreeItem[]` | `[]` | 渲染树形结构的数据源数组 |
+| 属性名 | 类型         | 默认值 | 描述                     |
+| ------ | ------------ | ------ | ------------------------ |
+| `data` | `TreeItem[]` | `[]`   | 渲染树形结构的数据源数组 |
 
 ### TreeItem 数据结构说明
 
 ```typescript
 interface TreeItem {
   id: string | number; // 节点的唯一标识符
-  label: string;       // 节点显示的文本内容
+  label: string; // 节点显示的文本内容
   children?: TreeItem[]; // 子节点数组（可选）
 }
 ```
