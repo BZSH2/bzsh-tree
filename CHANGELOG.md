@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/BZSH2/bzsh-tree/compare/v1.1.0...v1.2.0) (2026-03-23)
+
+
+### Features
+
+* 完善初始化配置 ([8598624](https://github.com/BZSH2/bzsh-tree/commit/8598624bfa2b95e0f17b698cee3bf337b50e8a99))
+* 优化 tree ([6dabff9](https://github.com/BZSH2/bzsh-tree/commit/6dabff967a25cc5d065adec5fab9cf85355ffd8c))
+
 ## [1.1.0](https://github.com/BZSH2/bzsh-tree/compare/v1.0.0...v1.1.0) (2026-03-19)
 
 
