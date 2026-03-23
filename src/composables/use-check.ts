@@ -7,6 +7,30 @@ export function useCheck<T = DefaultTreeItem>(
   emit: any,
   nodeMap: Ref<Map<TreeKey, FlattenTreeItem<T>>>,
 ) {
+  const collectCheckedInfo = () => {
+    const checkedNodes: T[] = [];
+    const checkedKeys: TreeKey[] = [];
+    const halfCheckedNodes: T[] = [];
+    const halfCheckedKeys: TreeKey[] = [];
+
+    for (const node of nodeMap.value.values()) {
+      if (node.checked) {
+        checkedNodes.push(node.data);
+        checkedKeys.push(node.key);
+      } else if (node.indeterminate) {
+        halfCheckedNodes.push(node.data);
+        halfCheckedKeys.push(node.key);
+      }
+    }
+
+    return {
+      checkedNodes,
+      checkedKeys,
+      halfCheckedNodes,
+      halfCheckedKeys,
+    };
+  };
+
   const getCheckedNodes = (): T[] => {
     const result: T[] = [];
     for (const node of nodeMap.value.values()) {
@@ -53,11 +77,16 @@ export function useCheck<T = DefaultTreeItem>(
   };
 
   const updateDownward = (node: FlattenTreeItem<T>, checked: boolean) => {
-    node.children.forEach((child) => {
+    const stack = [...node.children];
+    while (stack.length > 0) {
+      const child = stack.pop();
+      if (!child) continue;
       child.checked = checked;
       child.indeterminate = false;
-      updateDownward(child, checked);
-    });
+      if (child.children.length > 0) {
+        stack.push(...child.children);
+      }
+    }
   };
 
   const handleCheckChange = (node: FlattenTreeItem<T>, checked: boolean) => {
@@ -70,12 +99,7 @@ export function useCheck<T = DefaultTreeItem>(
     }
 
     emit('check-change', node.data, node.checked, node.indeterminate);
-    emit('check', node.data, {
-      checkedNodes: getCheckedNodes(),
-      checkedKeys: getCheckedKeys(),
-      halfCheckedNodes: getHalfCheckedNodes(),
-      halfCheckedKeys: getHalfCheckedKeys(),
-    });
+    emit('check', node.data, collectCheckedInfo());
   };
 
   const setChecked = (key: TreeKey, checked: boolean) => {
@@ -91,6 +115,15 @@ export function useCheck<T = DefaultTreeItem>(
   };
 
   const setCheckedKeys = (keys: TreeKey[]) => {
+    if (props.checkStrictly) {
+      const keySet = new Set(keys);
+      nodeMap.value.forEach((node) => {
+        node.checked = keySet.has(node.key);
+        node.indeterminate = false;
+      });
+      return;
+    }
+
     // 先清空所有勾选状态
     nodeMap.value.forEach((node) => {
       node.checked = false;
@@ -102,10 +135,8 @@ export function useCheck<T = DefaultTreeItem>(
       const node = nodeMap.value.get(key);
       if (node) {
         node.checked = true;
-        if (!props.checkStrictly) {
-          updateDownward(node, true);
-          updateUpward(node);
-        }
+        updateDownward(node, true);
+        updateUpward(node);
       }
     });
   };

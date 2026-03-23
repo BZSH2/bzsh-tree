@@ -4,6 +4,7 @@ import type { FlattenTreeItem, TreeProps, TreeKey, DefaultTreeItem } from '../ty
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useTree<T = DefaultTreeItem>(props: TreeProps<T>, emit: any) {
   const nodeMap = shallowRef<Map<TreeKey, FlattenTreeItem<T>>>(new Map());
+  const rootNodes = shallowRef<FlattenTreeItem<T>[]>([]);
   const flattenData = shallowRef<FlattenTreeItem<T>[]>([]);
   const currentNodeKey = shallowRef<TreeKey | undefined>();
 
@@ -11,13 +12,13 @@ export function useTree<T = DefaultTreeItem>(props: TreeProps<T>, emit: any) {
   const labelKey = computed(() => props.props?.label || 'label');
   const childrenKey = computed(() => props.props?.children || 'children');
   const disabledKey = computed(() => props.props?.disabled || 'disabled');
+  const defaultExpandedKeySet = computed(() => new Set(props.defaultExpandedKeys || []));
+  const defaultCheckedKeySet = computed(() => new Set(props.defaultCheckedKeys || []));
 
   const computeVisibleData = () => {
     const result: FlattenTreeItem<T>[] = [];
-    const rootNodes = Array.from(nodeMap.value.values()).filter((n) => n.parentKey === null);
 
-    // 使用迭代 (基于栈) 替代递归，提升大数据量下的性能和防止栈溢出
-    const stack = [...rootNodes].reverse(); // 反转以保持原始顺序 (因为是后进先出)
+    const stack = [...rootNodes.value].reverse();
 
     while (stack.length > 0) {
       const node = stack.pop();
@@ -46,15 +47,16 @@ export function useTree<T = DefaultTreeItem>(props: TreeProps<T>, emit: any) {
         level = 0,
         parentKey: TreeKey | null = null,
       ): FlattenTreeItem<T>[] => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        return nodes.map((node: any) => {
+        const result: FlattenTreeItem<T>[] = [];
+        for (const rawNode of nodes) {
+          const node = rawNode as Record<string, any>;
           const key = node[valueKey.value as string];
           const childrenData = node[childrenKey.value as string] || [];
           const isLeaf = childrenData.length === 0;
 
           let isDisabled = false;
           if (typeof disabledKey.value === 'function') {
-            isDisabled = (disabledKey.value as (data: T) => boolean)(node);
+            isDisabled = (disabledKey.value as (data: T) => boolean)(rawNode);
           } else if (typeof disabledKey.value === 'string') {
             isDisabled = !!node[disabledKey.value];
           }
@@ -62,14 +64,14 @@ export function useTree<T = DefaultTreeItem>(props: TreeProps<T>, emit: any) {
           const flattenNode: FlattenTreeItem<T> = {
             key,
             label: node[labelKey.value as string],
-            data: node,
+            data: rawNode,
             parentKey,
             children: [],
             level,
             isLeaf,
-            expanded: props.defaultExpandedKeys?.includes(key) || false,
+            expanded: defaultExpandedKeySet.value.has(key),
             disabled: isDisabled,
-            checked: props.defaultCheckedKeys?.includes(key) || false,
+            checked: defaultCheckedKeySet.value.has(key),
             indeterminate: false,
             visible: true,
           };
@@ -78,11 +80,12 @@ export function useTree<T = DefaultTreeItem>(props: TreeProps<T>, emit: any) {
           if (!isLeaf) {
             flattenNode.children = build(childrenData, level + 1, key);
           }
-          return flattenNode;
-        });
+          result.push(flattenNode);
+        }
+        return result;
       };
 
-      build(newData);
+      rootNodes.value = build(newData);
       nodeMap.value = newMap;
       computeVisibleData();
     },

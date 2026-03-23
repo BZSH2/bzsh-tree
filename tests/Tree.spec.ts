@@ -23,7 +23,7 @@ describe('Tree.vue', () => {
         data,
       },
     });
-    const items = wrapper.findAll('.bzsh-tree-node-label');
+    const items = wrapper.findAll('.bzsh-tree-node__label');
     expect(items.length).toBe(2);
     expect(items[0].text()).toBe('Node 1');
   });

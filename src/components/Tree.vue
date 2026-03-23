@@ -1,6 +1,11 @@
 <!-- eslint-disable vue/no-template-shadow -->
 <template>
-  <div ref="containerRef" class="bzsh-tree" @scroll="handleScroll">
+  <div
+    ref="containerRef"
+    class="bzsh-tree"
+    :style="{ height: `${height}px` }"
+    @scroll="handleScroll"
+  >
     <div v-if="!visibleData.length" class="bzsh-tree-empty-block">
       <slot name="empty">
         <span class="bzsh-tree-empty-text">{{ emptyText }}</span>
@@ -27,7 +32,7 @@
 </template>
 
 <script setup lang="ts" generic="T extends Record<string, any>">
-import { provide, onMounted, toRefs } from 'vue';
+import { provide, toRefs } from 'vue';
 import TreeNode from './TreeNode.vue';
 import { useTree } from '../composables/use-tree';
 import { useExpand } from '../composables/use-expand';
@@ -75,7 +80,7 @@ const props = withDefaults(
   },
 );
 
-const { emptyText } = toRefs(props);
+const { emptyText, height } = toRefs(props);
 
 const emit = defineEmits<{
   (e: 'node-click', data: T, node: FlattenTreeItem<T>): void;
@@ -147,12 +152,6 @@ defineExpose({
   expandAll,
   collapseAll,
   filter,
-});
-
-onMounted(() => {
-  if (containerRef.value) {
-    containerRef.value.style.height = `${props.height}px`;
-  }
 });
 </script>
 

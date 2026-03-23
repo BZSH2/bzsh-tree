@@ -1,11 +1,11 @@
-(function(){try{if(typeof document<`u`){var e=document.createElement(`style`);e.appendChild(document.createTextNode(`.bzsh-tree[data-v-3af95eaa]{--bzsh-tree-bg-color:var(--el-bg-color-overlay,#fff);--bzsh-tree-text-color:var(--el-text-color-primary,#606266);--bzsh-tree-border-color:var(--el-border-color-light,#e4e7ed);--bzsh-tree-empty-color:var(--el-text-color-secondary,#909399);--bzsh-tree-scrollbar-thumb:#dcdfe6;--bzsh-tree-scrollbar-thumb-hover:#c0c4cc;font-family:var(--el-font-family,"Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif);border:1px solid var(--bzsh-tree-border-color);background-color:var(--bzsh-tree-bg-color);width:100%;color:var(--bzsh-tree-text-color);box-sizing:border-box;border-radius:4px;position:relative;overflow-y:auto}.bzsh-tree[data-v-3af95eaa]::-webkit-scrollbar{width:6px;height:6px}.bzsh-tree[data-v-3af95eaa]::-webkit-scrollbar-track{background:0 0}.bzsh-tree[data-v-3af95eaa]::-webkit-scrollbar-thumb{background:var(--bzsh-tree-scrollbar-thumb);border-radius:3px}.bzsh-tree[data-v-3af95eaa]::-webkit-scrollbar-thumb:hover{background:var(--bzsh-tree-scrollbar-thumb-hover)}.bzsh-tree-phantom[data-v-3af95eaa]{z-index:-1;position:absolute;top:0;left:0;right:0}.bzsh-tree-content[data-v-3af95eaa]{position:absolute;top:0;left:0;right:0}.bzsh-tree-empty-block[data-v-3af95eaa]{justify-content:center;align-items:center;height:100%;min-height:60px;display:flex}.bzsh-tree-empty-text[data-v-3af95eaa]{color:var(--bzsh-tree-empty-color);font-size:14px}
-/*$vite$:1*/`)),document.head.appendChild(e)}}catch(e){console.error(`vite-plugin-css-injected-by-js`,e)}})();import { Fragment as e, computed as t, createBlock as n, createCommentVNode as r, createElementBlock as i, createElementVNode as a, createSlots as o, createTextVNode as s, defineComponent as c, inject as l, normalizeClass as u, normalizeStyle as d, onMounted as f, openBlock as p, provide as m, ref as h, renderList as g, renderSlot as _, shallowRef as v, toDisplayString as y, toRefs as b, unref as x, watch as S, withCtx as C, withModifiers as w } from "vue";
+(function(){try{if(typeof document<`u`){var e=document.createElement(`style`);e.appendChild(document.createTextNode(`.bzsh-tree[data-v-efcaf0d9]{--bzsh-tree-bg-color:var(--el-bg-color-overlay,#fff);--bzsh-tree-text-color:var(--el-text-color-primary,#606266);--bzsh-tree-border-color:var(--el-border-color-light,#e4e7ed);--bzsh-tree-empty-color:var(--el-text-color-secondary,#909399);--bzsh-tree-scrollbar-thumb:#dcdfe6;--bzsh-tree-scrollbar-thumb-hover:#c0c4cc;font-family:var(--el-font-family,"Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif);border:1px solid var(--bzsh-tree-border-color);background-color:var(--bzsh-tree-bg-color);width:100%;color:var(--bzsh-tree-text-color);box-sizing:border-box;border-radius:4px;position:relative;overflow-y:auto}.bzsh-tree[data-v-efcaf0d9]::-webkit-scrollbar{width:6px;height:6px}.bzsh-tree[data-v-efcaf0d9]::-webkit-scrollbar-track{background:0 0}.bzsh-tree[data-v-efcaf0d9]::-webkit-scrollbar-thumb{background:var(--bzsh-tree-scrollbar-thumb);border-radius:3px}.bzsh-tree[data-v-efcaf0d9]::-webkit-scrollbar-thumb:hover{background:var(--bzsh-tree-scrollbar-thumb-hover)}.bzsh-tree-phantom[data-v-efcaf0d9]{z-index:-1;position:absolute;top:0;left:0;right:0}.bzsh-tree-content[data-v-efcaf0d9]{position:absolute;top:0;left:0;right:0}.bzsh-tree-empty-block[data-v-efcaf0d9]{justify-content:center;align-items:center;height:100%;min-height:60px;display:flex}.bzsh-tree-empty-text[data-v-efcaf0d9]{color:var(--bzsh-tree-empty-color);font-size:14px}
+/*$vite$:1*/`)),document.head.appendChild(e)}}catch(e){console.error(`vite-plugin-css-injected-by-js`,e)}})();import { Fragment as e, computed as t, createBlock as n, createCommentVNode as r, createElementBlock as i, createElementVNode as a, createSlots as o, createTextVNode as s, defineComponent as c, inject as l, normalizeClass as u, normalizeStyle as d, openBlock as f, provide as p, ref as m, renderList as h, renderSlot as g, shallowRef as _, toDisplayString as v, toRefs as y, unref as b, watch as x, withCtx as S, withModifiers as C } from "vue";
 //#region \0plugin-vue:export-helper
-var T = (e, t) => {
+var w = (e, t) => {
 	let n = e.__vccOpts || e;
 	for (let [e, r] of t) n[e] = r;
 	return n;
-}, E = {}, D = {
+}, T = {}, E = {
 	viewBox: "0 0 1024 1024",
 	version: "1.1",
 	xmlns: "http://www.w3.org/2000/svg",
@@ -13,181 +13,198 @@ var T = (e, t) => {
 	height: "1em",
 	fill: "currentColor"
 };
-function O(e, t) {
-	return p(), i("svg", D, [...t[0] ||= [a("path", { d: "M340.864 149.312a30.592 30.592 0 0 0 0 42.752L652.736 512 340.864 831.872a30.592 30.592 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 533.376a32 32 0 0 0 0-42.752L382.592 149.312a29.12 29.12 0 0 0-41.728 0z" }, null, -1)]]);
+function D(e, t) {
+	return f(), i("svg", E, [...t[0] ||= [a("path", { d: "M340.864 149.312a30.592 30.592 0 0 0 0 42.752L652.736 512 340.864 831.872a30.592 30.592 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 533.376a32 32 0 0 0 0-42.752L382.592 149.312a29.12 29.12 0 0 0-41.728 0z" }, null, -1)]]);
 }
-var k = /* @__PURE__ */ T(E, [["render", O]]), A = Symbol("treeContext"), j = { class: "bzsh-tree-node__content" }, M = ["checked", "indeterminate"], N = { class: "bzsh-tree-node__label" }, P = /* @__PURE__ */ T(/* @__PURE__ */ c({
+var O = /* @__PURE__ */ w(T, [["render", D]]), k = Symbol("treeContext"), A = { class: "bzsh-tree-node__content" }, j = ["checked", "indeterminate"], M = { class: "bzsh-tree-node__label" }, N = /* @__PURE__ */ w(/* @__PURE__ */ c({
 	__name: "TreeNode",
 	props: {
 		node: {},
 		isCurrent: { type: Boolean }
 	},
 	setup(e) {
-		let { node: t, isCurrent: o } = e, { props: c, handleNodeClick: f, handleCheckChange: m, handleToggleExpand: h } = l(A), { indent: g, showCheckbox: v, expandOnClickNode: b, checkOnClickNode: S } = c, C = () => {
-			t.disabled || (f(t), b && h(t), S && v && m(t, !t.checked));
+		let { node: t, isCurrent: o } = e, { props: c, handleNodeClick: p, handleCheckChange: m, handleToggleExpand: h } = l(k), { indent: _, showCheckbox: y, expandOnClickNode: x, checkOnClickNode: S } = c, w = () => {
+			t.disabled || (p(t), x && h(t), S && y && m(t, !t.checked));
 		}, T = () => {
 			t.disabled || h(t);
 		}, E = () => {
 			t.disabled || m(t, !t.checked);
 		};
-		return (e, c) => (p(), i("div", {
+		return (e, c) => (f(), i("div", {
 			class: u(["bzsh-tree-node", {
-				"is-expanded": x(t).expanded,
-				"is-current": x(o),
-				"is-disabled": x(t).disabled
+				"is-expanded": b(t).expanded,
+				"is-current": b(o),
+				"is-disabled": b(t).disabled
 			}]),
-			style: d({ paddingLeft: `${x(t).level * (x(g) || 16)}px` }),
-			onClick: w(C, ["stop"])
-		}, [a("div", j, [
+			style: d({ paddingLeft: `${b(t).level * (b(_) || 16)}px` }),
+			onClick: C(w, ["stop"])
+		}, [a("div", A, [
 			a("span", {
-				class: u(["bzsh-tree-node__expand-icon", { "is-leaf": x(t).isLeaf }]),
-				onClick: w(T, ["stop"])
-			}, [x(t).isLeaf ? r("", !0) : (p(), n(k, { key: 0 }))], 2),
-			x(v) ? (p(), i("span", {
+				class: u(["bzsh-tree-node__expand-icon", { "is-leaf": b(t).isLeaf }]),
+				onClick: C(T, ["stop"])
+			}, [b(t).isLeaf ? r("", !0) : (f(), n(O, { key: 0 }))], 2),
+			b(y) ? (f(), i("span", {
 				key: 0,
 				class: "bzsh-tree-node__checkbox",
-				onClick: w(E, ["stop"])
+				onClick: C(E, ["stop"])
 			}, [a("input", {
 				type: "checkbox",
-				checked: x(t).checked,
-				indeterminate: x(t).indeterminate
-			}, null, 8, M)])) : r("", !0),
-			a("span", N, [_(e.$slots, "default", {
-				node: x(t),
-				data: x(t).data
-			}, () => [s(y(x(t).label), 1)], !0)])
+				checked: b(t).checked,
+				indeterminate: b(t).indeterminate
+			}, null, 8, j)])) : r("", !0),
+			a("span", M, [g(e.$slots, "default", {
+				node: b(t),
+				data: b(t).data
+			}, () => [s(v(b(t).label), 1)], !0)])
 		])], 6));
 	}
 }), [["__scopeId", "data-v-b7b322c2"]]);
 //#endregion
 //#region src/composables/use-tree.ts
-function F(e, n) {
-	let r = v(/* @__PURE__ */ new Map()), i = v([]), a = v(), o = t(() => e.props?.value || e.nodeKey || "id"), s = t(() => e.props?.label || "label"), c = t(() => e.props?.children || "children"), l = t(() => e.props?.disabled || "disabled"), u = () => {
-		let e = [], t = [...Array.from(r.value.values()).filter((e) => e.parentKey === null)].reverse();
+function P(e, n) {
+	let r = _(/* @__PURE__ */ new Map()), i = _([]), a = _([]), o = _(), s = t(() => e.props?.value || e.nodeKey || "id"), c = t(() => e.props?.label || "label"), l = t(() => e.props?.children || "children"), u = t(() => e.props?.disabled || "disabled"), d = t(() => new Set(e.defaultExpandedKeys || [])), f = t(() => new Set(e.defaultCheckedKeys || [])), p = () => {
+		let e = [], t = [...i.value].reverse();
 		for (; t.length > 0;) {
 			let n = t.pop();
 			if (!(!n || !n.visible) && (e.push(n), n.expanded && n.children.length > 0)) for (let e = n.children.length - 1; e >= 0; e--) t.push(n.children[e]);
 		}
-		i.value = e;
+		a.value = e;
 	};
-	return S(() => e.data, (t) => {
-		let n = /* @__PURE__ */ new Map(), i = (t, r = 0, a = null) => t.map((t) => {
-			let u = t[o.value], d = t[c.value] || [], f = d.length === 0, p = !1;
-			typeof l.value == "function" ? p = l.value(t) : typeof l.value == "string" && (p = !!t[l.value]);
-			let m = {
-				key: u,
-				label: t[s.value],
-				data: t,
-				parentKey: a,
-				children: [],
-				level: r,
-				isLeaf: f,
-				expanded: e.defaultExpandedKeys?.includes(u) || !1,
-				disabled: p,
-				checked: e.defaultCheckedKeys?.includes(u) || !1,
-				indeterminate: !1,
-				visible: !0
-			};
-			return n.set(u, m), f || (m.children = i(d, r + 1, u)), m;
-		});
-		i(t), r.value = n, u();
+	return x(() => e.data, (e) => {
+		let t = /* @__PURE__ */ new Map(), n = (e, r = 0, i = null) => {
+			let a = [];
+			for (let o of e) {
+				let e = o, p = e[s.value], m = e[l.value] || [], h = m.length === 0, g = !1;
+				typeof u.value == "function" ? g = u.value(o) : typeof u.value == "string" && (g = !!e[u.value]);
+				let _ = {
+					key: p,
+					label: e[c.value],
+					data: o,
+					parentKey: i,
+					children: [],
+					level: r,
+					isLeaf: h,
+					expanded: d.value.has(p),
+					disabled: g,
+					checked: f.value.has(p),
+					indeterminate: !1,
+					visible: !0
+				};
+				t.set(p, _), h || (_.children = n(m, r + 1, p)), a.push(_);
+			}
+			return a;
+		};
+		i.value = n(e), r.value = t, p();
 	}, {
 		deep: !0,
 		immediate: !0
 	}), {
 		nodeMap: r,
-		flattenData: i,
-		currentNodeKey: a,
+		flattenData: a,
+		currentNodeKey: o,
 		handleNodeClick: (e) => {
-			a.value = e.key, n("node-click", e.data, e), n("current-change", e.data, e);
+			o.value = e.key, n("node-click", e.data, e), n("current-change", e.data, e);
 		},
 		expandAll: () => {
 			Array.from(r.value.values()).forEach((e) => {
 				e.isLeaf || (e.expanded = !0);
-			}), u();
+			}), p();
 		},
 		collapseAll: () => {
 			Array.from(r.value.values()).forEach((e) => {
 				e.isLeaf || (e.expanded = !1);
-			}), u();
+			}), p();
 		},
-		computeVisibleData: u,
-		getCurrentKey: () => a.value,
+		computeVisibleData: p,
+		getCurrentKey: () => o.value,
 		getCurrentNode: () => {
-			if (a.value !== void 0) return r.value.get(a.value)?.data;
+			if (o.value !== void 0) return r.value.get(o.value)?.data;
 		},
 		setCurrentKey: (e) => {
-			a.value = e;
+			o.value = e;
 		}
 	};
 }
 //#endregion
 //#region src/composables/use-expand.ts
-function I(e, t, { computeVisibleData: n }) {
+function F(e, t, { computeVisibleData: n }) {
 	return { handleToggleExpand: (e) => {
 		e.isLeaf || (e.expanded = !e.expanded, n(), e.expanded ? t("node-expand", e.data, e) : t("node-collapse", e.data, e));
 	} };
 }
 //#endregion
 //#region src/composables/use-check.ts
-function L(e, t, n) {
+function ee(e, t, n) {
 	let r = () => {
+		let e = [], t = [], r = [], i = [];
+		for (let a of n.value.values()) a.checked ? (e.push(a.data), t.push(a.key)) : a.indeterminate && (r.push(a.data), i.push(a.key));
+		return {
+			checkedNodes: e,
+			checkedKeys: t,
+			halfCheckedNodes: r,
+			halfCheckedKeys: i
+		};
+	}, i = () => {
 		let e = [];
 		for (let t of n.value.values()) t.checked && e.push(t.data);
 		return e;
-	}, i = () => {
+	}, a = () => {
 		let e = [];
 		for (let t of n.value.values()) t.checked && e.push(t.key);
 		return e;
-	}, a = () => {
+	}, o = () => {
 		let e = [];
 		for (let t of n.value.values()) t.indeterminate && e.push(t.data);
 		return e;
-	}, o = () => {
+	}, s = () => {
 		let e = [];
 		for (let t of n.value.values()) t.indeterminate && e.push(t.key);
 		return e;
-	}, s = (e) => {
+	}, c = (e) => {
 		let t = n.value.get(e.parentKey);
 		for (; t;) {
 			let e = t.children, r = e.every((e) => e.checked), i = e.some((e) => e.checked || e.indeterminate);
 			t.checked = r, t.indeterminate = !r && i, t = n.value.get(t.parentKey);
 		}
-	}, c = (e, t) => {
-		e.children.forEach((e) => {
-			e.checked = t, e.indeterminate = !1, c(e, t);
-		});
+	}, l = (e, t) => {
+		let n = [...e.children];
+		for (; n.length > 0;) {
+			let e = n.pop();
+			e && (e.checked = t, e.indeterminate = !1, e.children.length > 0 && n.push(...e.children));
+		}
 	};
 	return {
-		getCheckedNodes: r,
-		getCheckedKeys: i,
-		getHalfCheckedNodes: a,
-		getHalfCheckedKeys: o,
-		handleCheckChange: (n, l) => {
-			n.checked = l, n.indeterminate = !1, e.checkStrictly || (c(n, l), s(n)), t("check-change", n.data, n.checked, n.indeterminate), t("check", n.data, {
-				checkedNodes: r(),
-				checkedKeys: i(),
-				halfCheckedNodes: a(),
-				halfCheckedKeys: o()
-			});
+		getCheckedNodes: i,
+		getCheckedKeys: a,
+		getHalfCheckedNodes: o,
+		getHalfCheckedKeys: s,
+		handleCheckChange: (n, i) => {
+			n.checked = i, n.indeterminate = !1, e.checkStrictly || (l(n, i), c(n)), t("check-change", n.data, n.checked, n.indeterminate), t("check", n.data, r());
 		},
 		setChecked: (t, r) => {
 			let i = n.value.get(t);
-			i && (i.checked = r, i.indeterminate = !1, e.checkStrictly || (c(i, r), s(i)));
+			i && (i.checked = r, i.indeterminate = !1, e.checkStrictly || (l(i, r), c(i)));
 		},
 		setCheckedKeys: (t) => {
+			if (e.checkStrictly) {
+				let e = new Set(t);
+				n.value.forEach((t) => {
+					t.checked = e.has(t.key), t.indeterminate = !1;
+				});
+				return;
+			}
 			n.value.forEach((e) => {
 				e.checked = !1, e.indeterminate = !1;
-			}), t.forEach((t) => {
-				let r = n.value.get(t);
-				r && (r.checked = !0, e.checkStrictly || (c(r, !0), s(r)));
+			}), t.forEach((e) => {
+				let t = n.value.get(e);
+				t && (t.checked = !0, l(t, !0), c(t));
 			});
 		}
 	};
 }
 //#endregion
 //#region src/composables/use-filter.ts
-function R(e, t, n) {
+function I(e, t, n) {
 	return { filter: (r) => {
 		if (!e.filterMethod) return;
 		let i = e.filterMethod;
@@ -212,8 +229,8 @@ function R(e, t, n) {
 }
 //#endregion
 //#region src/composables/use-virtual-scroll.ts
-function z(e, n) {
-	let r = h(null), i = h(0), a = t(() => (n.value.length || 0) * (e.itemSize || 0)), o = t(() => Math.ceil((e.height || 0) / (e.itemSize || 1))), s = t(() => Math.floor(i.value / (e.itemSize || 1))), c = t(() => Math.max(0, s.value - 4)), l = t(() => Math.min(n.value.length, s.value + o.value + 4));
+function L(e, n) {
+	let r = m(null), i = m(0), a = t(() => (n.value.length || 0) * (e.itemSize || 0)), o = t(() => Math.ceil((e.height || 0) / (e.itemSize || 1))), s = t(() => Math.floor(i.value / (e.itemSize || 1))), c = t(() => Math.max(0, s.value - 4)), l = t(() => Math.min(n.value.length, s.value + o.value + 4));
 	return {
 		containerRef: r,
 		totalHeight: a,
@@ -226,10 +243,10 @@ function z(e, n) {
 }
 //#endregion
 //#region src/components/Tree.vue?vue&type=script&setup=true&lang.ts
-var B = {
+var R = {
 	key: 0,
 	class: "bzsh-tree-empty-block"
-}, V = { class: "bzsh-tree-empty-text" }, H = /* @__PURE__ */ T(/* @__PURE__ */ c({
+}, z = { class: "bzsh-tree-empty-text" }, B = /* @__PURE__ */ w(/* @__PURE__ */ c({
 	__name: "Tree",
 	props: {
 		data: { default: () => [] },
@@ -277,56 +294,55 @@ var B = {
 		"node-collapse"
 	],
 	setup(t, { expose: s, emit: c }) {
-		let l = t, { emptyText: u } = b(l), h = c, { nodeMap: v, flattenData: S, currentNodeKey: w, handleNodeClick: T, expandAll: E, collapseAll: D, computeVisibleData: O, getCurrentKey: k, getCurrentNode: j, setCurrentKey: M } = F(l, h), { handleToggleExpand: N } = I(l, h, { computeVisibleData: O }), { getCheckedNodes: H, getCheckedKeys: U, getHalfCheckedNodes: W, getHalfCheckedKeys: G, handleCheckChange: K, setChecked: q, setCheckedKeys: J } = L(l, h, v), { filter: Y } = R(l, v, O), { containerRef: X, totalHeight: Z, visibleData: Q, offset: ee, handleScroll: $ } = z(l, S);
-		return m(A, {
+		let l = t, { emptyText: u, height: m } = y(l), _ = c, { nodeMap: x, flattenData: C, currentNodeKey: w, handleNodeClick: T, expandAll: E, collapseAll: D, computeVisibleData: O, getCurrentKey: A, getCurrentNode: j, setCurrentKey: M } = P(l, _), { handleToggleExpand: B } = F(l, _, { computeVisibleData: O }), { getCheckedNodes: V, getCheckedKeys: H, getHalfCheckedNodes: U, getHalfCheckedKeys: W, handleCheckChange: G, setChecked: K, setCheckedKeys: q } = ee(l, _, x), { filter: J } = I(l, x, O), { containerRef: Y, totalHeight: X, visibleData: Z, offset: Q, handleScroll: $ } = L(l, C);
+		return p(k, {
 			props: l,
 			handleNodeClick: T,
-			handleCheckChange: K,
-			handleToggleExpand: N
+			handleCheckChange: G,
+			handleToggleExpand: B
 		}), s({
-			getCheckedNodes: H,
-			getCheckedKeys: U,
-			getHalfCheckedNodes: W,
-			getHalfCheckedKeys: G,
-			setChecked: q,
-			setCheckedKeys: J,
-			getCurrentKey: k,
+			getCheckedNodes: V,
+			getCheckedKeys: H,
+			getHalfCheckedNodes: U,
+			getHalfCheckedKeys: W,
+			setChecked: K,
+			setCheckedKeys: q,
+			getCurrentKey: A,
 			getCurrentNode: j,
 			setCurrentKey: M,
 			expandAll: E,
 			collapseAll: D,
-			filter: Y
-		}), f(() => {
-			X.value && (X.value.style.height = `${l.height}px`);
-		}), (t, s) => (p(), i("div", {
+			filter: J
+		}), (t, s) => (f(), i("div", {
 			ref_key: "containerRef",
-			ref: X,
+			ref: Y,
 			class: "bzsh-tree",
-			onScroll: s[0] ||= (...e) => x($) && x($)(...e)
-		}, [x(Q).length ? (p(), i("div", {
+			style: d({ height: `${b(m)}px` }),
+			onScroll: s[0] ||= (...e) => b($) && b($)(...e)
+		}, [b(Z).length ? (f(), i("div", {
 			key: 1,
 			class: "bzsh-tree-phantom",
-			style: d({ height: `${x(Z)}px` })
-		}, null, 4)) : (p(), i("div", B, [_(t.$slots, "empty", {}, () => [a("span", V, y(x(u)), 1)], !0)])), x(Q).length ? (p(), i("div", {
+			style: d({ height: `${b(X)}px` })
+		}, null, 4)) : (f(), i("div", R, [g(t.$slots, "empty", {}, () => [a("span", z, v(b(u)), 1)], !0)])), b(Z).length ? (f(), i("div", {
 			key: 2,
 			class: "bzsh-tree-content",
-			style: d({ transform: `translateY(${x(ee)}px)` })
-		}, [(p(!0), i(e, null, g(x(Q), (e) => (p(), n(P, {
+			style: d({ transform: `translateY(${b(Q)}px)` })
+		}, [(f(!0), i(e, null, h(b(Z), (e) => (f(), n(N, {
 			key: e.key,
 			node: e,
-			"is-current": x(w) === e.key
+			"is-current": b(w) === e.key
 		}, o({ _: 2 }, [t.$slots.default ? {
 			name: "default",
-			fn: C(({ node: e, data: n }) => [_(t.$slots, "default", {
+			fn: S(({ node: e, data: n }) => [g(t.$slots, "default", {
 				node: e,
 				data: n
 			}, void 0, !0)]),
 			key: "0"
-		} : void 0]), 1032, ["node", "is-current"]))), 128))], 4)) : r("", !0)], 544));
+		} : void 0]), 1032, ["node", "is-current"]))), 128))], 4)) : r("", !0)], 36));
 	}
-}), [["__scopeId", "data-v-3af95eaa"]]);
-H.install = (e) => {
-	e.component("BzshTree", H);
+}), [["__scopeId", "data-v-efcaf0d9"]]);
+B.install = (e) => {
+	e.component("BzshTree", B);
 };
 //#endregion
-export { H as BzshTree, H as default };
+export { B as BzshTree, B as default };
