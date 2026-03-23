@@ -27,8 +27,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Tree } from '../src/index'; // 直接引入源码进行实时预览
-import type { TreeItem } from '../src/components/Tree.vue';
+import { BzshTree as Tree } from '../src/index'; // 直接引入源码进行实时预览
+import type { TreeItem } from '../src/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const treeRef = ref<any>(null);

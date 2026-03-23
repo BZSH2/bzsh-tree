@@ -1,12 +1,12 @@
-import type { App } from 'vue';
+import type { App, Plugin } from 'vue';
 import Tree from './components/Tree.vue';
-import type { TreeItem, TreeProps } from './components/types';
 
-export { Tree };
-export type { TreeItem, TreeProps };
+export const BzshTree = Tree as unknown as typeof Tree & Plugin;
 
-export default {
-  install(app: App) {
-    app.component('BzshTree', Tree);
-  },
+BzshTree.install = (app: App): void => {
+  app.component('BzshTree', BzshTree);
 };
+
+export default BzshTree;
+
+export * from './types';

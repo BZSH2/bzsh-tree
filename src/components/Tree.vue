@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-template-shadow -->
 <template>
   <div ref="containerRef" class="bzsh-tree" @scroll="handleScroll">
     <div v-if="!visibleData.length" class="bzsh-tree-empty-block">
@@ -15,15 +16,7 @@
         v-for="item in visibleData"
         :key="item.key"
         :node="item"
-        :item-size="itemSize"
-        :indent="indent"
-        :show-checkbox="showCheckbox"
         :is-current="currentNodeKey === item.key"
-        :highlight-current="highlightCurrent"
-        :icon="icon"
-        @toggle="handleToggleExpand"
-        @click="handleNodeClick"
-        @check="handleCheck"
       >
         <template v-if="$slots.default" #default="{ node, data }">
           <slot :node="node" :data="data" />
@@ -33,69 +26,98 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { watch, onMounted } from 'vue';
+<script setup lang="ts" generic="T extends Record<string, any>">
+import { provide, onMounted, toRefs } from 'vue';
 import TreeNode from './TreeNode.vue';
-import type { TreeItem, FlattenTreeItem, TreeProps, TreeKey } from './types';
-import { useTreeData } from './composables/use-tree-data';
-import { useCheck } from './composables/use-check';
-import { useFilter } from './composables/use-filter';
-import { useVirtualScroll } from './composables/use-virtual-scroll';
+import { useTree } from '../composables/use-tree';
+import { useExpand } from '../composables/use-expand';
+import { useCheck } from '../composables/use-check';
+import { useFilter } from '../composables/use-filter';
+import { useVirtualScroll } from '../composables/use-virtual-scroll';
+import { treeContextKey } from '../constants';
+import type { TreeKey, TreeOptionProps, FlattenTreeItem } from '../types';
 
-const props = withDefaults(defineProps<TreeProps>(), {
-  emptyText: 'No Data',
-  height: 400,
-  itemSize: 26,
-  highlightCurrent: false,
-  expandOnClickNode: true,
-  checkOnClickNode: false,
-  showCheckbox: false,
-  checkStrictly: false,
-  indent: 16,
-  nodeKey: 'id',
-});
+const props = withDefaults(
+  defineProps<{
+    data?: T[];
+    emptyText?: string;
+    nodeKey?: string | keyof T;
+    props?: TreeOptionProps<T>;
+    highlightCurrent?: boolean;
+    expandOnClickNode?: boolean;
+    checkOnClickNode?: boolean;
+    defaultExpandedKeys?: TreeKey[];
+    defaultCheckedKeys?: TreeKey[];
+    showCheckbox?: boolean;
+    checkStrictly?: boolean;
+    indent?: number;
+    height?: number;
+    itemSize?: number;
+    filterMethod?: (query: string, data: T, node: FlattenTreeItem<T>) => boolean;
+  }>(),
+  {
+    data: () => [],
+    emptyText: 'No Data',
+    nodeKey: 'id',
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    props: () =>
+      ({ value: 'id', label: 'label', children: 'children', disabled: 'disabled' }) as any,
+    highlightCurrent: false,
+    expandOnClickNode: true,
+    checkOnClickNode: false,
+    defaultExpandedKeys: () => [],
+    defaultCheckedKeys: () => [],
+    showCheckbox: false,
+    checkStrictly: false,
+    indent: 16,
+    height: 400,
+    itemSize: 26,
+  },
+);
+
+const { emptyText } = toRefs(props);
 
 const emit = defineEmits<{
-  (e: 'node-click', data: TreeItem, node: FlattenTreeItem): void;
-  (e: 'check-change', data: TreeItem, checked: boolean, indeterminate: boolean): void;
+  (e: 'node-click', data: T, node: FlattenTreeItem<T>): void;
+  (e: 'check-change', data: T, checked: boolean, indeterminate: boolean): void;
   (
     e: 'check',
-    data: TreeItem,
+    data: T,
     checkedInfo: {
-      checkedNodes: TreeItem[];
+      checkedNodes: T[];
       checkedKeys: TreeKey[];
-      halfCheckedNodes: TreeItem[];
+      halfCheckedNodes: T[];
       halfCheckedKeys: TreeKey[];
     },
   ): void;
-  (e: 'current-change', data: TreeItem, node: FlattenTreeItem): void;
-  (e: 'node-expand', data: TreeItem, node: FlattenTreeItem): void;
-  (e: 'node-collapse', data: TreeItem, node: FlattenTreeItem): void;
+  (e: 'current-change', data: T, node: FlattenTreeItem<T>): void;
+  (e: 'node-expand', data: T, node: FlattenTreeItem<T>): void;
+  (e: 'node-collapse', data: T, node: FlattenTreeItem<T>): void;
 }>();
 
-// --- Composables ---
 const {
   nodeMap,
   flattenData,
   currentNodeKey,
-  buildTree,
-  computeVisibleData,
+  handleNodeClick,
   expandAll,
   collapseAll,
-  setData,
-  toggleExpand,
-} = useTreeData(props);
+  computeVisibleData,
+  getCurrentKey,
+  getCurrentNode,
+  setCurrentKey,
+} = useTree(props, emit);
 
+const { handleToggleExpand } = useExpand(props, emit, { computeVisibleData });
 const {
-  initCheckedState,
-  toggleCheck,
-  setCheckedKeys,
-  setChecked,
   getCheckedNodes,
   getCheckedKeys,
   getHalfCheckedNodes,
   getHalfCheckedKeys,
-} = useCheck(props, nodeMap);
+  handleCheckChange,
+  setChecked,
+  setCheckedKeys,
+} = useCheck(props, emit, nodeMap);
 
 const { filter } = useFilter(props, nodeMap, computeVisibleData);
 
@@ -104,78 +126,26 @@ const { containerRef, totalHeight, visibleData, offset, handleScroll } = useVirt
   flattenData,
 );
 
-// --- Watchers ---
-// 监听数据源变化
-watch(
-  () => props.data,
-  (newData) => {
-    nodeMap.value.clear();
-    buildTree(newData);
-    initCheckedState();
-    computeVisibleData();
-  },
-  { deep: true, immediate: true },
-);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+provide(treeContextKey as any, {
+  props,
+  handleNodeClick,
+  handleCheckChange,
+  handleToggleExpand,
+});
 
-// --- 交互逻辑 ---
-
-const handleToggleExpand = (node: FlattenTreeItem) => {
-  toggleExpand(node);
-  if (node.expanded) {
-    emit('node-expand', node.data, node);
-  } else {
-    emit('node-collapse', node.data, node);
-  }
-};
-
-const handleCheck = (node: FlattenTreeItem, checked: boolean) => {
-  toggleCheck(node, checked);
-
-  emit('check-change', node.data, node.checked, node.indeterminate);
-
-  emit('check', node.data, {
-    checkedNodes: getCheckedNodes(),
-    checkedKeys: getCheckedKeys(),
-    halfCheckedNodes: getHalfCheckedNodes(),
-    halfCheckedKeys: getHalfCheckedKeys(),
-  });
-};
-
-const handleNodeClick = (node: FlattenTreeItem) => {
-  currentNodeKey.value = node.key;
-  emit('node-click', node.data, node);
-  emit('current-change', node.data, node);
-
-  if (props.expandOnClickNode) {
-    handleToggleExpand(node);
-  }
-
-  if (props.checkOnClickNode && props.showCheckbox && !node.disabled) {
-    handleCheck(node, !node.checked);
-  }
-};
-
-// --- 暴露 API ---
 defineExpose({
   getCheckedNodes,
   getCheckedKeys,
   getHalfCheckedNodes,
   getHalfCheckedKeys,
-  setCheckedKeys,
   setChecked,
-  getCurrentKey: () => currentNodeKey.value,
-  getCurrentNode: () => {
-    if (currentNodeKey.value !== undefined) {
-      return nodeMap.value.get(currentNodeKey.value)?.data;
-    }
-    return undefined;
-  },
-  setCurrentKey: (key: TreeKey) => {
-    currentNodeKey.value = key;
-  },
+  setCheckedKeys,
+  getCurrentKey,
+  getCurrentNode,
+  setCurrentKey,
   expandAll,
   collapseAll,
-  setData,
   filter,
 });
 
@@ -187,12 +157,12 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* ... 样式保持不变 ... */
 .bzsh-tree {
-  /* 定义 CSS 变量以便于统一管理和后续支持主题切换 */
-  --bzsh-tree-bg-color: #fff;
-  --bzsh-tree-text-color: #606266;
-  --bzsh-tree-border-color: #e4e7ed;
-  --bzsh-tree-empty-color: #909399;
+  --bzsh-tree-bg-color: var(--el-bg-color-overlay, #fff);
+  --bzsh-tree-text-color: var(--el-text-color-primary, #606266);
+  --bzsh-tree-border-color: var(--el-border-color-light, #e4e7ed);
+  --bzsh-tree-empty-color: var(--el-text-color-secondary, #909399);
   --bzsh-tree-scrollbar-thumb: #dcdfe6;
   --bzsh-tree-scrollbar-thumb-hover: #c0c4cc;
 
@@ -217,7 +187,6 @@ onMounted(() => {
   box-sizing: border-box;
 }
 
-/* 优化滚动条样式 (Webkit) */
 .bzsh-tree::-webkit-scrollbar {
   width: 6px;
   height: 6px;

@@ -1,75 +1,73 @@
-import { TreeItem, FlattenTreeItem, TreeProps, TreeKey } from './types';
-declare function __VLS_template(): {
-    attrs: Partial<{}>;
+import { TreeKey, TreeOptionProps, FlattenTreeItem } from '../types';
+declare const _default: <T extends Record<string, any>>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal<Pick<Partial<{}> & Omit<{
+        readonly "onNode-click"?: ((data: T, node: FlattenTreeItem<T>) => any) | undefined;
+        readonly "onCurrent-change"?: ((data: T, node: FlattenTreeItem<T>) => any) | undefined;
+        readonly "onNode-expand"?: ((data: T, node: FlattenTreeItem<T>) => any) | undefined;
+        readonly "onNode-collapse"?: ((data: T, node: FlattenTreeItem<T>) => any) | undefined;
+        readonly "onCheck-change"?: ((data: T, checked: boolean, indeterminate: boolean) => any) | undefined;
+        readonly onCheck?: ((data: T, checkedInfo: {
+            checkedNodes: T[];
+            checkedKeys: TreeKey[];
+            halfCheckedNodes: T[];
+            halfCheckedKeys: TreeKey[];
+        }) => any) | undefined;
+    } & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, never>, "onNode-click" | "onCurrent-change" | "onNode-expand" | "onNode-collapse" | "onCheck-change" | "onCheck"> & {
+        data?: T[];
+        emptyText?: string;
+        nodeKey?: string | keyof T;
+        props?: TreeOptionProps<T>;
+        highlightCurrent?: boolean;
+        expandOnClickNode?: boolean;
+        checkOnClickNode?: boolean;
+        defaultExpandedKeys?: TreeKey[];
+        defaultCheckedKeys?: TreeKey[];
+        showCheckbox?: boolean;
+        checkStrictly?: boolean;
+        indent?: number;
+        height?: number;
+        itemSize?: number;
+        filterMethod?: (query: string, data: T, node: FlattenTreeItem<T>) => boolean;
+    } & Partial<{}>> & import('vue').PublicProps;
+    expose(exposed: import('vue').ShallowUnwrapRef<{
+        getCheckedNodes: () => T[];
+        getCheckedKeys: () => TreeKey[];
+        getHalfCheckedNodes: () => T[];
+        getHalfCheckedKeys: () => TreeKey[];
+        setChecked: (key: TreeKey, checked: boolean) => void;
+        setCheckedKeys: (keys: TreeKey[]) => void;
+        getCurrentKey: () => TreeKey | undefined;
+        getCurrentNode: () => T | undefined;
+        setCurrentKey: (key: TreeKey) => void;
+        expandAll: () => void;
+        collapseAll: () => void;
+        filter: (query: string) => void;
+    }>): void;
+    attrs: any;
     slots: {
         empty?(_: {}): any;
         default?(_: {
-            node: FlattenTreeItem;
-            data: TreeItem;
+            node: FlattenTreeItem<T>;
+            data: T;
         }): any;
     };
-    refs: {
-        containerRef: HTMLDivElement;
+    emit: {
+        (e: "node-click", data: T, node: FlattenTreeItem<T>): void;
+        (e: "check-change", data: T, checked: boolean, indeterminate: boolean): void;
+        (e: "check", data: T, checkedInfo: {
+            checkedNodes: T[];
+            checkedKeys: TreeKey[];
+            halfCheckedNodes: T[];
+            halfCheckedKeys: TreeKey[];
+        }): void;
+        (e: "current-change", data: T, node: FlattenTreeItem<T>): void;
+        (e: "node-expand", data: T, node: FlattenTreeItem<T>): void;
+        (e: "node-collapse", data: T, node: FlattenTreeItem<T>): void;
     };
-    rootEl: HTMLDivElement;
+}>) => import('vue').VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
 };
-type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-declare const __VLS_component: import('vue').DefineComponent<TreeProps, {
-    getCheckedNodes: (leafOnly?: boolean) => TreeItem[];
-    getCheckedKeys: (leafOnly?: boolean) => TreeKey[];
-    getHalfCheckedNodes: () => TreeItem[];
-    getHalfCheckedKeys: () => TreeKey[];
-    setCheckedKeys: (keys: TreeKey[]) => void;
-    setChecked: (key: TreeKey, checked: boolean) => void;
-    getCurrentKey: () => TreeKey | undefined;
-    getCurrentNode: () => TreeItem | undefined;
-    setCurrentKey: (key: TreeKey) => void;
-    expandAll: () => void;
-    collapseAll: () => void;
-    setData: (data: TreeItem[]) => void;
-    filter: (value: string) => void;
-}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
-    check: (data: TreeItem, checkedInfo: {
-        checkedNodes: TreeItem[];
-        checkedKeys: TreeKey[];
-        halfCheckedNodes: TreeItem[];
-        halfCheckedKeys: TreeKey[];
-    }) => any;
-    "node-click": (data: TreeItem, node: FlattenTreeItem) => any;
-    "check-change": (data: TreeItem, checked: boolean, indeterminate: boolean) => any;
-    "current-change": (data: TreeItem, node: FlattenTreeItem) => any;
-    "node-expand": (data: TreeItem, node: FlattenTreeItem) => any;
-    "node-collapse": (data: TreeItem, node: FlattenTreeItem) => any;
-}, string, import('vue').PublicProps, Readonly<TreeProps> & Readonly<{
-    onCheck?: ((data: TreeItem, checkedInfo: {
-        checkedNodes: TreeItem[];
-        checkedKeys: TreeKey[];
-        halfCheckedNodes: TreeItem[];
-        halfCheckedKeys: TreeKey[];
-    }) => any) | undefined;
-    "onNode-click"?: ((data: TreeItem, node: FlattenTreeItem) => any) | undefined;
-    "onCheck-change"?: ((data: TreeItem, checked: boolean, indeterminate: boolean) => any) | undefined;
-    "onCurrent-change"?: ((data: TreeItem, node: FlattenTreeItem) => any) | undefined;
-    "onNode-expand"?: ((data: TreeItem, node: FlattenTreeItem) => any) | undefined;
-    "onNode-collapse"?: ((data: TreeItem, node: FlattenTreeItem) => any) | undefined;
-}>, {
-    height: number;
-    itemSize: number;
-    indent: number;
-    showCheckbox: boolean;
-    highlightCurrent: boolean;
-    emptyText: string;
-    expandOnClickNode: boolean;
-    checkOnClickNode: boolean;
-    checkStrictly: boolean;
-    nodeKey: string;
-}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
-    containerRef: HTMLDivElement;
-}, HTMLDivElement>;
-declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
-type __VLS_WithTemplateSlots<T, S> = T & {
-    new (): {
-        $slots: S;
-    };
-};
+type __VLS_PrettifyLocal<T> = {
+    [K in keyof T]: T[K];
+} & {};

@@ -1,7 +1,5 @@
-import { App } from 'vue';
+import { Plugin } from 'vue';
 import { default as Tree } from './components/Tree.vue';
-export { Tree };
-declare const _default: {
-    install(app: App): void;
-};
-export default _default;
+export declare const BzshTree: typeof Tree & Plugin;
+export default BzshTree;
+export * from './types';

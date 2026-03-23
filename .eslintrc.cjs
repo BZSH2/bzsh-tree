@@ -23,7 +23,18 @@ module.exports = {
     'vue/component-name-in-template-casing': ['error', 'PascalCase'],
     'vue/require-default-prop': 'off',
     'vue/attribute-hyphenation': 'error',
-    'vue/html-self-closing': 'error',
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'always',
+          normal: 'always',
+          component: 'always',
+        },
+        svg: 'always',
+        math: 'always',
+      },
+    ],
     'vue/v-on-event-hyphenation': 'error',
 
     // TypeScript 规则
